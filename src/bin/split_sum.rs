@@ -23,6 +23,7 @@ fn main() {
     let count = 100000000;
 
     let mut arr = vec![1; count];
+    let arr_handle = I32VecHandle(&mut arr as I32VecPtr);
 
     let batch_size = usize::max(count / threads, 1);
     println!("batch size: {}", batch_size);
@@ -30,14 +31,12 @@ fn main() {
 
     let mut pre_sums = vec![0; loop_count];
 
-    let arr_ptr = I32VecHandle(&mut arr as I32VecPtr);
-
     let start_time = Instant::now();
 
     pool.scope(|s| {
         for batch_index in 0..loop_count {
             s.spawn(async move {
-                serial_prefix_sum(arr_ptr, batch_index, batch_size);
+                serial_prefix_sum(arr_handle, batch_index, batch_size);
             });
         }
     });
@@ -52,7 +51,7 @@ fn main() {
         for batch_index in 0..loop_count {
             let pre_sum = pre_sums[batch_index];
             s.spawn(async move {
-                batch_sum(arr_ptr, pre_sum, batch_index, batch_size);
+                batch_sum(arr_handle, pre_sum, batch_index, batch_size);
             });
         }
     });
