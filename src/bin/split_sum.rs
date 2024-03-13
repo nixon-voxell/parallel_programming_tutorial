@@ -7,7 +7,7 @@ type I32VecPtr = *mut Vec<i32>;
 struct I32VecHandle(I32VecPtr);
 
 impl I32VecHandle {
-    pub fn get_mut(&self) -> &mut Vec<i32> {
+    pub fn get_mut(&self) -> &mut [i32] {
         unsafe { &mut *self.0 }
     }
 }
