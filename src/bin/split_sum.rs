@@ -7,7 +7,7 @@ type I32VecPtr = *mut Vec<i32>;
 struct I32VecHandle(I32VecPtr);
 
 impl I32VecHandle {
-    pub fn get_mut(&self) -> &mut [i32] {
+    pub fn get_mut(&mut self) -> &mut [i32] {
         unsafe { &mut *self.0 }
     }
 }
@@ -64,7 +64,7 @@ fn main() {
     println!("Total sum: {}", arr[arr.len() - 1]);
 }
 
-fn serial_prefix_sum(arr: I32VecHandle, batch_index: usize, batch_size: usize) {
+fn serial_prefix_sum(mut arr: I32VecHandle, batch_index: usize, batch_size: usize) {
     let arr = arr.get_mut();
 
     let index_start = batch_index * batch_size + 1;
@@ -75,7 +75,7 @@ fn serial_prefix_sum(arr: I32VecHandle, batch_index: usize, batch_size: usize) {
     }
 }
 
-fn batch_sum(arr: I32VecHandle, pre_sum: i32, batch_index: usize, batch_size: usize) {
+fn batch_sum(mut arr: I32VecHandle, pre_sum: i32, batch_index: usize, batch_size: usize) {
     let arr = arr.get_mut();
 
     let index_start = batch_index * batch_size;
