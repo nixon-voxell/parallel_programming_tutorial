@@ -44,6 +44,10 @@ impl I32VecHandle {
     pub fn get_mut(&mut self) -> &mut [i32] {
         unsafe { &mut *self.0 }
     }
+
+    pub fn get(&self) -> &[i32] {
+        unsafe { &*self.0 }
+    }
 }
 
 unsafe impl Send for I32VecHandle {}
