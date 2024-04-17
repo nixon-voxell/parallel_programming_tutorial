@@ -1,26 +1,11 @@
 use bevy_tasks::TaskPoolBuilder;
 use web_time::Instant;
 
-type I32VecPtr = *mut Vec<i32>;
-
-#[derive(Clone, Copy)]
-struct I32VecHandle(I32VecPtr);
-
-impl I32VecHandle {
-    pub fn get_mut(&mut self) -> &mut [i32] {
-        unsafe { &mut *self.0 }
-    }
-}
-
-unsafe impl Send for I32VecHandle {}
-unsafe impl Sync for I32VecHandle {}
-
 fn main() {
     let threads = bevy_tasks::available_parallelism();
-
     let pool = TaskPoolBuilder::new().num_threads(threads).build();
 
-    let count = 100000000;
+    let count = 10000000;
 
     let mut arr = vec![1; count];
     let arr_handle = I32VecHandle(&mut arr as I32VecPtr);
@@ -85,3 +70,17 @@ fn batch_sum(mut arr: I32VecHandle, pre_sum: i32, batch_index: usize, batch_size
         arr[i] += pre_sum;
     }
 }
+
+type I32VecPtr = *mut Vec<i32>;
+
+#[derive(Clone, Copy)]
+struct I32VecHandle(I32VecPtr);
+
+impl I32VecHandle {
+    pub fn get_mut(&mut self) -> &mut [i32] {
+        unsafe { &mut *self.0 }
+    }
+}
+
+unsafe impl Send for I32VecHandle {}
+unsafe impl Sync for I32VecHandle {}

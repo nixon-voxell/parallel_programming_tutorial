@@ -1,7 +1,7 @@
 use web_time::Instant;
 
 fn main() {
-    const COUNT: usize = 100000000;
+    const COUNT: usize = 10000000;
 
     let mut prefix_sum = vec![1; COUNT];
 
