@@ -40,6 +40,7 @@ type I32VecPtr = *mut Vec<i32>;
 #[derive(Clone, Copy)]
 struct I32VecHandle(I32VecPtr);
 
+#[allow(dead_code)]
 impl I32VecHandle {
     pub fn get_mut(&mut self) -> &mut [i32] {
         unsafe { &mut *self.0 }
