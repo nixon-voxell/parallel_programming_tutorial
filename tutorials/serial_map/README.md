@@ -14,6 +14,7 @@ Example output:
 
 <details>
 <summary>Here is the complete solution:</summary>
+
 ```rust
 const SIZE: usize = 10;
 
