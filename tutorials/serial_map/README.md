@@ -14,7 +14,10 @@ Example output:
 ```
 
 <details>
-<summary>Here is the complete solution:</summary>
+<summary>
+
+## Complete Solution:
+</summary>
 
 ```rust
 const SIZE: usize = 10;

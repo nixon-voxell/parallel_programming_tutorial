@@ -92,7 +92,7 @@ We have to think of a much clever way...
 
 If you are a Rust developer you might saw this error and say to yourself: "Oh, why not just `clone()` it???".
 
-Bad news, if you did that, every thread will receive a completely new copy of `vec` and what you did inside the thread remains inside the thread and is not refected in the main thread!
+Bad news, if you did that, every thread will receive a completely new copy of `vec` and what you did inside the thread remains inside the thread and is not reflected in the main thread!
 
 ## Pro Rustacean's Journey
 
@@ -100,7 +100,10 @@ However, being the "pro" you are, some of you may think to yourself: "Ahhh, I se
 And you begin implementing it...
 
 <details>
-<summary>What is `Arc<Mutex<T>>`?</summary>
+<summary>
+
+### What is`Arc<Mutex<T>>`?
+</summary>
 
 For those who are new to Rust, you may not understand what it means. Here is how it works:
 
@@ -108,8 +111,8 @@ Imagine you have a treasure chest (the shared data) that you want to protect bec
 To keep things organized, you give each adventurer a key, but there's a rule: only _**one**_ adventurer who has the key can open the chest at any given time.
 This prevents them from bumping into each other and making a mess.
 
-Now, the `Arc<Mutex<T>>` is like having a special kind of key ring (Arc) that can make copies of the key, so multiple adventurers can have their own copy of the key.
-However, they still have to follow the rule (Mutex) that only one adventurer can use their key to open the chest at a time.
+Now, the `Arc<Mutex<T>>` is like having a special kind of key ring (`Arc`) that can make copies of the key, so multiple adventurers can have their own copy of the key.
+However, they still have to follow the rule (`Mutex`) that only one adventurer can use their key to open the chest at a time.
 This way, the treasure remains safe, and the adventurers can take turns accessing it without causing chaos.
 
 </details>
@@ -137,7 +140,7 @@ fn main() {
 ```
 
 Everything seems fine, output is showing the correct results...
-Then, you suddenly remember there is something more going on when you call the mysterious `lock` function.
+Then, you suddenly remember there is something more going on when you call the mysterious `lock()` function.
 You head over to the Rust doucmentation and found [THIS](https://doc.rust-lang.org/std/sync/struct.Mutex.html#method.lock)!
 
 ```rust
@@ -157,8 +160,9 @@ To solve this issue, we need to introduce a dark magic in Rust, _**`unsafe`**_.
 The idea is that using `unsafe`, we can freely access our data and represent them as pointers.
 However, as a pro Rustacean, we wouldn't want this dark magic to be polluting our code base everywhere (we don't want to have to write `unsafe` everytime we want to access our `vec`!).
 
-When creating this tutorial, I came up with a solution by introducing a new type which contains the `unsafe` code.
-Introducing the `I32VecPtr`:
+When creating this tutorial, I came up with a solution by introducing a new type which isolates the `unsafe` code.
+
+Introducing, the `I32VecPtr`:
 
 ```rust
 type I32VecPtr = *mut Vec<i32>;
@@ -212,7 +216,10 @@ However, with great power comes great responsibility, now that we can mutate our
 - Make sure each thread is not reading from locations in `vec` that are being mutated in other threads (we never know if it's going to be mutated first or read first).
 
 <details>
-<summary>Here is the complete solution:</summary>
+<summary>
+
+## Complete Solution:
+</summary>
 
 ```rust
 use bevy_tasks::TaskPoolBuilder;
