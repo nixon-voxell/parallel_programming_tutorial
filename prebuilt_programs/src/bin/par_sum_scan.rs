@@ -5,9 +5,9 @@ const SIZE: usize = 10000000;
 
 fn main() {
     // Initialize the list
-    let mut array = vec![1; SIZE];
+    let mut vec = vec![1; SIZE];
     // Create handle
-    let arr_handle = I32VecHandle(&mut array as I32VecPtr);
+    let vec_handle = I32VecHandle(&mut vec as I32VecPtr);
 
     // Initialize thread pool
     let threads = bevy_tasks::available_parallelism();
@@ -25,14 +25,14 @@ fn main() {
     pool.scope(|s| {
         for batch_index in 0..loop_count {
             s.spawn(async move {
-                serial_prefix_sum(arr_handle, batch_index, batch_size);
+                serial_prefix_sum(vec_handle, batch_index, batch_size);
             });
         }
     });
 
     for batch_index in 0..loop_count {
         for b in 0..batch_index {
-            pre_sums[batch_index] += array[b * batch_size + batch_size - 1];
+            pre_sums[batch_index] += vec[b * batch_size + batch_size - 1];
         }
     }
 
@@ -40,7 +40,7 @@ fn main() {
         for batch_index in 0..loop_count {
             let pre_sum = pre_sums[batch_index];
             s.spawn(async move {
-                batch_sum(arr_handle, pre_sum, batch_index, batch_size);
+                batch_sum(vec_handle, pre_sum, batch_index, batch_size);
             });
         }
     });
@@ -50,7 +50,7 @@ fn main() {
         (Instant::now() - start_time).as_secs_f32()
     );
 
-    println!("Total sum: {}", array[array.len() - 1]);
+    println!("Total sum: {}", vec[vec.len() - 1]);
 }
 
 fn serial_prefix_sum(mut arr: I32VecHandle, batch_index: usize, batch_size: usize) {

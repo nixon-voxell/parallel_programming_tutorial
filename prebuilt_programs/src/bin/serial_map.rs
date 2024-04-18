@@ -2,19 +2,19 @@ const SIZE: usize = 10;
 
 fn main() {
     // Initialize the list
-    let mut array = vec![0; SIZE];
+    let mut vec = vec![0; SIZE];
 
-    for i in 0..array.len() {
-        array[i] = i as i32;
+    for i in 0..vec.len() {
+        vec[i] = i as i32;
     }
 
     // Map operation
-    for i in 0..array.len() {
-        array[i] = array[i] * array[i];
+    for i in 0..vec.len() {
+        vec[i] = vec[i] * vec[i];
     }
 
     // Verify the output
-    for element in array {
+    for element in vec {
         println!("{:?}", element);
     }
 }

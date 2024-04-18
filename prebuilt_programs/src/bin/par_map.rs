@@ -4,14 +4,14 @@ const SIZE: usize = 10;
 
 fn main() {
     // Initialize the list
-    let mut array = vec![0; SIZE];
+    let mut vec = vec![0; SIZE];
 
-    for i in 0..array.len() {
-        array[i] = i as i32;
+    for i in 0..vec.len() {
+        vec[i] = i as i32;
     }
 
     // Create handle
-    let mut arr_handle = I32VecHandle(&mut array as I32VecPtr);
+    let mut vec_handle = I32VecHandle(&mut vec as I32VecPtr);
 
     // Initialize thread pool
     let threads = bevy_tasks::available_parallelism();
@@ -19,10 +19,10 @@ fn main() {
 
     // Spawn threads
     pool.scope(|s| {
-        for thread_index in 0..array.len() {
+        for thread_index in 0..vec.len() {
             s.spawn(async move {
                 // Get array
-                let arr = arr_handle.get_mut();
+                let arr = vec_handle.get_mut();
                 // Perform map operation
                 arr[thread_index] = arr[thread_index] * arr[thread_index];
             });
@@ -30,7 +30,7 @@ fn main() {
     });
 
     // Verify the output
-    for element in array {
+    for element in vec {
         println!("{:?}", element);
     }
 }

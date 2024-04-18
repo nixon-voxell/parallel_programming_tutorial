@@ -5,16 +5,16 @@ const STENCIL_COUNT: usize = 3;
 
 fn main() {
     // Initialize the list
-    let mut array = vec![0; SIZE * STENCIL_COUNT];
-    let mut output_array = vec![0; SIZE];
+    let mut vec = vec![0; SIZE * STENCIL_COUNT];
+    let mut output_vec = vec![0; SIZE];
 
-    for i in 0..array.len() {
-        array[i] = i as i32;
+    for i in 0..vec.len() {
+        vec[i] = i as i32;
     }
 
     // Create handle
-    let arr_handle = I32VecHandle(&mut array as I32VecPtr);
-    let mut out_arr_handle = I32VecHandle(&mut output_array as I32VecPtr);
+    let arr_handle = I32VecHandle(&mut vec as I32VecPtr);
+    let mut out_arr_handle = I32VecHandle(&mut output_vec as I32VecPtr);
 
     // Initialize thread pool
     let threads = bevy_tasks::available_parallelism();
@@ -42,7 +42,7 @@ fn main() {
     });
 
     // Verify the output
-    for element in output_array {
+    for element in output_vec {
         println!("{:?}", element);
     }
 }

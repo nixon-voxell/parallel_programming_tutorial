@@ -3,11 +3,11 @@ const STENCIL_COUNT: usize = 3;
 
 fn main() {
     // Initialize the list
-    let mut array = vec![0; SIZE * STENCIL_COUNT];
-    let mut output_array = vec![0; SIZE];
+    let mut vec = vec![0; SIZE * STENCIL_COUNT];
+    let mut output_vec = vec![0; SIZE];
 
-    for i in 0..array.len() {
-        array[i] = i;
+    for i in 0..vec.len() {
+        vec[i] = i;
     }
 
     // Stencil operation
@@ -17,15 +17,15 @@ fn main() {
         for s in 0..STENCIL_COUNT {
             // Calculate the index of the element inside `array`
             let index = i * STENCIL_COUNT + s;
-            sum += array[index];
+            sum += vec[index];
         }
 
         // write the result to the `output_array`
-        output_array[i] = sum;
+        output_vec[i] = sum;
     }
 
     // Verify the output
-    for element in output_array {
+    for element in output_vec {
         println!("{:?}", element);
     }
 }
