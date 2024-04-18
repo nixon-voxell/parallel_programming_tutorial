@@ -1,6 +1,5 @@
-workspace = { members = ["tutorial/spawn_threads"] }
 [package]
-name = "parprogtut"
+name = "parallel_programming_tutorials"
 version = "0.1.0"
 edition = "2021"
 

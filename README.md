@@ -2,7 +2,10 @@
 
 ## Running Prebuilt Programs
 
-To run any of the prebuilt programs in the repository, simply run the command: `cargo run --bin 'filename'` (e.g. `cargo run --bin spawn_threads`).
+To run any of the prebuilt programs in the repository:
+
+1. Head into [`prebuilt_programs`](./prebuilt_programs) folder by running: `cd prebuilt_programs`.
+2. Run the command: `cargo run --bin 'filename'` (e.g. `cargo run --bin spawn_threads`).
 
 ## Tutorial Structure
 
