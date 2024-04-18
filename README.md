@@ -12,8 +12,8 @@ Each folder is also a new rust project which means you can do your exercise insi
 
 Example for `spawn_threads`:
 
-Tutorial file: [`tutorials/spawn_threads/spawn_threads.md`](./tutorials/spawn_threads/spawn_threads.md)
-Exercise file: [`tutorials/spawn_threads/src/main.rs`](./tutorials/spawn_threads/src/main.rs)
+- Tutorial file: [`tutorials/spawn_threads/spawn_threads.md`](./tutorials/spawn_threads/spawn_threads.md)
+- Exercise file: [`tutorials/spawn_threads/src/main.rs`](./tutorials/spawn_threads/src/main.rs)
 
 ### Order of Tutorial
 
