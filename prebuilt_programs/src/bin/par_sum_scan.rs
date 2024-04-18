@@ -1,18 +1,22 @@
 use bevy_tasks::TaskPoolBuilder;
 use web_time::Instant;
 
+const SIZE: usize = 10000000;
+
 fn main() {
+    // Initialize the array
+    let mut array = vec![1; SIZE];
+    // Create handle
+    let arr_handle = I32VecHandle(&mut array as I32VecPtr);
+
+    // Initialize thread pool
     let threads = bevy_tasks::available_parallelism();
     let pool = TaskPoolBuilder::new().num_threads(threads).build();
 
-    let count = 10000000;
-
-    let mut arr = vec![1; count];
-    let arr_handle = I32VecHandle(&mut arr as I32VecPtr);
-
-    let batch_size = usize::max(count / threads, 1);
+    // Initialize batch size
+    let batch_size = usize::max(SIZE / threads, 1);
     println!("batch size: {}", batch_size);
-    let loop_count = (count + batch_size - 1) / batch_size;
+    let loop_count = (SIZE + batch_size - 1) / batch_size;
 
     let mut pre_sums = vec![0; loop_count];
 
@@ -28,7 +32,7 @@ fn main() {
 
     for batch_index in 0..loop_count {
         for b in 0..batch_index {
-            pre_sums[batch_index] += arr[b * batch_size + batch_size - 1];
+            pre_sums[batch_index] += array[b * batch_size + batch_size - 1];
         }
     }
 
@@ -46,7 +50,7 @@ fn main() {
         (Instant::now() - start_time).as_secs_f32()
     );
 
-    println!("Total sum: {}", arr[arr.len() - 1]);
+    println!("Total sum: {}", array[array.len() - 1]);
 }
 
 fn serial_prefix_sum(mut arr: I32VecHandle, batch_index: usize, batch_size: usize) {

@@ -61,6 +61,23 @@ fn main() {
 
 Try and run the program and see the output!
 
+At first glance, you will realize that the order of the output is incorrect!
+
+```
+Hello from thread #0
+Hello from thread #3
+Hello from thread #9
+Hello from thread #4
+Hello from thread #5
+Hello from thread #6
+Hello from thread #7
+Hello from thread #8
+Hello from thread #1
+Hello from thread #2
+```
+
+Why?? It's because there is no order in thread execution, they are all running simultaneously!
+
 ## Full Code
 
 ```rust
