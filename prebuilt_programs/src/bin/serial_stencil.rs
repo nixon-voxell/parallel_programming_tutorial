@@ -15,12 +15,12 @@ fn main() {
         // Record the sum
         let mut sum = 0;
         for s in 0..STENCIL_COUNT {
-            // Calculate the index of the element inside `array`
+            // Calculate the index of the element inside `vec`
             let index = i * STENCIL_COUNT + s;
             sum += vec[index];
         }
 
-        // write the result to the `output_array`
+        // write the result to the `output_vec`
         output_vec[i] = sum;
     }
 

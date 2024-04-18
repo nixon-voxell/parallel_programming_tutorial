@@ -13,8 +13,8 @@ fn main() {
     }
 
     // Create handle
-    let arr_handle = I32VecHandle(&mut vec as I32VecPtr);
-    let mut out_arr_handle = I32VecHandle(&mut output_vec as I32VecPtr);
+    let vec_handle = I32VecHandle(&mut vec as I32VecPtr);
+    let mut out_vec_handle = I32VecHandle(&mut output_vec as I32VecPtr);
 
     // Initialize thread pool
     let threads = bevy_tasks::available_parallelism();
@@ -24,19 +24,19 @@ fn main() {
     pool.scope(|s| {
         for thread_index in 0..SIZE {
             s.spawn(async move {
-                // Get array
-                let arr = arr_handle.get();
-                let out_arr = out_arr_handle.get_mut();
+                // Get vec
+                let vec = vec_handle.get();
+                let output_vec = out_vec_handle.get_mut();
 
                 // Perform map operation
                 let mut sum = 0;
                 for s in 0..STENCIL_COUNT {
-                    // Calculate the index of the element inside `array`
+                    // Calculate the index of the element inside `vec`
                     let index = thread_index * STENCIL_COUNT + s;
-                    sum += arr[index];
+                    sum += vec[index];
                 }
 
-                out_arr[thread_index] = sum;
+                output_vec[thread_index] = sum;
             });
         }
     });

@@ -7,7 +7,6 @@ edition = "2021"
 
 [dependencies]
 bevy_tasks = { version = "0.13", features = ["multi-threaded"] }
-# bevy_tasks = "0.13"
 web-time = "0.2"
 rand = "0.8"
 rand_chacha = "0.3"

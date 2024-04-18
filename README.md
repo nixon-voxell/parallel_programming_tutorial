@@ -24,6 +24,6 @@ It is highly encouraged to follow the order of this list:
 
 1. [Spawning Threads](./tutorials/spawn_threads)
 2. [Serial Map](./tutorials/serial_map)
-3. [Parallel Map](./tutorials/parallel_map)
+3. [Parallel Map](./tutorials/par_map)
 4. [Serial Stencil](./tutorials/serial_stencil)
-5. [Parallel Stencil](./tutorials/parallel_stencil)
+5. [Parallel Stencil](./tutorials/par_stencil)

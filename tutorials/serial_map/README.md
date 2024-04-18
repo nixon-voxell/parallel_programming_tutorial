@@ -1,5 +1,6 @@
 # Serial Map
 
+The map operation is a one to one operation, it does not take dependencies from any other elements.
 Try to come up with a serial algorithm that takes in a list of integers and returns out the squared of those integers.
 
 Example input:

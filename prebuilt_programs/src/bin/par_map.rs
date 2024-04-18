@@ -21,10 +21,10 @@ fn main() {
     pool.scope(|s| {
         for thread_index in 0..vec.len() {
             s.spawn(async move {
-                // Get array
-                let arr = vec_handle.get_mut();
+                // Get vec
+                let vec = vec_handle.get_mut();
                 // Perform map operation
-                arr[thread_index] = arr[thread_index] * arr[thread_index];
+                vec[thread_index] = vec[thread_index] * vec[thread_index];
             });
         }
     });

@@ -53,25 +53,25 @@ fn main() {
     println!("Total sum: {}", vec[vec.len() - 1]);
 }
 
-fn serial_prefix_sum(mut arr: I32VecHandle, batch_index: usize, batch_size: usize) {
-    let arr = arr.get_mut();
+fn serial_prefix_sum(mut vec: I32VecHandle, batch_index: usize, batch_size: usize) {
+    let vec = vec.get_mut();
 
     let index_start = batch_index * batch_size + 1;
-    let index_end = usize::min(index_start + batch_size - 1, arr.len());
+    let index_end = usize::min(index_start + batch_size - 1, vec.len());
 
     for i in index_start..index_end {
-        arr[i] += arr[i - 1];
+        vec[i] += vec[i - 1];
     }
 }
 
-fn batch_sum(mut arr: I32VecHandle, pre_sum: i32, batch_index: usize, batch_size: usize) {
-    let arr = arr.get_mut();
+fn batch_sum(mut vec: I32VecHandle, pre_sum: i32, batch_index: usize, batch_size: usize) {
+    let vec = vec.get_mut();
 
     let index_start = batch_index * batch_size;
-    let index_end = usize::min(index_start + batch_size, arr.len());
+    let index_end = usize::min(index_start + batch_size, vec.len());
 
     for i in index_start..index_end {
-        arr[i] += pre_sum;
+        vec[i] += pre_sum;
     }
 }
 
