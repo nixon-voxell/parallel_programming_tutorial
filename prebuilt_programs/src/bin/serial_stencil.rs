@@ -2,7 +2,7 @@ const SIZE: usize = 10;
 const STENCIL_COUNT: usize = 3;
 
 fn main() {
-    // Initialize the array
+    // Initialize the list
     let mut array = vec![0; SIZE * STENCIL_COUNT];
     let mut output_array = vec![0; SIZE];
 

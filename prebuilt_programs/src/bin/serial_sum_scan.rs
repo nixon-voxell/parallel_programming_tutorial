@@ -3,7 +3,7 @@ use web_time::Instant;
 const SIZE: usize = 10000000;
 
 fn main() {
-    // Initialize the array
+    // Initialize the list
     let mut array = vec![1; SIZE];
 
     let start_time = Instant::now();

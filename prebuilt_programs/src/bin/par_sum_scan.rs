@@ -4,7 +4,7 @@ use web_time::Instant;
 const SIZE: usize = 10000000;
 
 fn main() {
-    // Initialize the array
+    // Initialize the list
     let mut array = vec![1; SIZE];
     // Create handle
     let arr_handle = I32VecHandle(&mut array as I32VecPtr);

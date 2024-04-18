@@ -3,7 +3,7 @@ use bevy_tasks::TaskPoolBuilder;
 const SIZE: usize = 10;
 
 fn main() {
-    // Initialize the array
+    // Initialize the list
     let mut array = vec![0; SIZE];
 
     for i in 0..array.len() {
