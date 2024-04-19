@@ -31,3 +31,4 @@ It is highly encouraged to follow the order of this list:
 3. [Parallel Map](./tutorials/par_map)
 4. [Serial Stencil](./tutorials/serial_stencil)
 5. [Parallel Stencil](./tutorials/par_stencil)
+6. [Batching](./tutorials/batch)
