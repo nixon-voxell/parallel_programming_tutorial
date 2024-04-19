@@ -1,6 +1,6 @@
 # Parallel Stencil
 
-Similar to our [serial stencil](../serial_stencil) exercise, here are the example inputs and outputs:
+Similar to our [serial stencil](../4_serial_stencil) exercise, here are the example inputs and outputs:
 
 Example input:
 ```

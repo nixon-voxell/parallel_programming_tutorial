@@ -3,7 +3,7 @@
 When creating parallel programs with the number of unit tasks exceeding way beyond the number logical cores (hardware limitation) you have, it's better to batch some of your tasks together (despite being capable of running simultaneously).
 Batching reduces overhead by minimizing the context-switching between tasks, maximizing CPU utilization, and improving overall efficiency in parallel processing.
 
-The concept of batching looks somewhat similar to how [parallel stencil](../par_stencil) works.
+The concept of batching looks somewhat similar to how [parallel stencil](../5_par_stencil) works.
 You first spawn a number of threads to be ran in parallel.
 
 ```rust

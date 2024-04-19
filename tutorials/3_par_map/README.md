@@ -1,6 +1,6 @@
 # Parallel Map
 
-Similar to our [serial map](../serial_map) exercise, here are the example inputs and outputs:
+Similar to our [serial map](../2_serial_map) exercise, here are the example inputs and outputs:
 
 Example input:
 ```

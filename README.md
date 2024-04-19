@@ -17,18 +17,18 @@ This tutorial is separated into multiple parts inside the [`tutorials`](./tutori
 Each folder (inside the tutorial folder) contains a markdown (`README.md`) file that explains what you should learn in that section.
 Each folder is also a new rust project which means you can do your exercise inside the `src/main.rs` file.
 
-Example for [`spawn_threads`](./tutorials/spawn_threads):
+Example for [`spawn_threads`](./tutorials/1_spawn_threads):
 
-- Tutorial file: [`tutorials/spawn_threads/README.md`](./tutorials/spawn_threads/README.md)
-- Exercise file: [`tutorials/spawn_threads/src/main.rs`](./tutorials/spawn_threads/src/main.rs)
+- Tutorial file: [`tutorials/spawn_threads/README.md`](./tutorials/1_spawn_threads/README.md)
+- Exercise file: [`tutorials/spawn_threads/src/main.rs`](./tutorials/1_spawn_threads/src/main.rs)
 
 ### Order of Tutorial
 
 It is highly encouraged to follow the order of this list:
 
-1. [Spawning Threads](./tutorials/spawn_threads)
-2. [Serial Map](./tutorials/serial_map)
-3. [Parallel Map](./tutorials/par_map)
-4. [Serial Stencil](./tutorials/serial_stencil)
-5. [Parallel Stencil](./tutorials/par_stencil)
-6. [Batching](./tutorials/batch)
+1. [Spawning Threads](./tutorials/1_spawn_threads)
+2. [Serial Map](./tutorials/2_serial_map)
+3. [Parallel Map](./tutorials/3_par_map)
+4. [Serial Stencil](./tutorials/4_serial_stencil)
+5. [Parallel Stencil](./tutorials/5_par_stencil)
+6. [Batching](./tutorials/6_batch)
