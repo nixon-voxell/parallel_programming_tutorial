@@ -13,9 +13,9 @@ Example output:
 ```
 
 However, this time, we want to perform the operations in parallel!
-The main idea here is that each element in the list will be mutated in a seprate thread.
+The main idea here is that each element in the list will be mutated in a separate thread.
 
-Here is the boiler plate to start with:
+Here is the boilerplate to start with:
 
 ```rust
 use bevy_tasks::TaskPoolBuilder;
@@ -92,7 +92,7 @@ We have to think of a much clever way...
 
 If you are a Rust developer you might saw this error and say to yourself: "Oh, why not just `clone()` it???".
 
-Bad news, if you did that, every thread will receive a completely new copy of `vec` and what you did inside the thread remains inside the thread and is not reflected in the main thread!
+Bad news, if you did that, every thread will receive a completely new copy of `vec` and what you did inside the thread remains inside the thread and is not reflected on the main thread!
 
 ## Pro Rustacean's Journey
 
@@ -102,7 +102,7 @@ And you begin implementing it...
 <details>
 <summary>
 
-### What is`Arc<Mutex<T>>`?
+### What is `Arc<Mutex<T>>`?
 </summary>
 
 For those who are new to Rust, you may not understand what it means. Here is how it works:
@@ -120,6 +120,7 @@ This way, the treasure remains safe, and the adventurers can take turns accessin
 ```rust
 fn main() {
     // ...
+    use std::sync::{Arc, Mutex};
     // Initialize `Arc<Mutex<T>>`
     let arc_vec = Arc::new(Mutex::new(&mut vec));
     // Spawn threads
@@ -138,6 +139,20 @@ fn main() {
     // ...
 }
 ```
+
+<details>
+<summary>
+
+### What is the `*` in `*element`?
+</summary>
+
+The `*` beside the `element` is a dereference operator, giving you access to the underlying value (`i32`) of the reference pointer (`&i32`).
+Hence, "de"-reference.
+
+What's a pointer?
+A pointer is basically a memory address that points towards a location in your memory that holds the actual value.
+
+</details>
 
 Everything seems fine, output is showing the correct results...
 Then, you suddenly remember there is something more going on when you call the mysterious `lock()` function.

@@ -2,7 +2,7 @@
 
 The first entry into parallel programming (or concurrent programming for that matter) is to spawn worker threads.
 In this tutorial, we won't be manually spawning threads using the standard library, instead we will utilize the [`bevy_tasks`](https://docs.rs/bevy_tasks/latest/bevy_tasks/) crate to create a thread pool and spawn our threads using the thread pool.
-The allows us to abstract away the need for thread management and ease you into learning some basic parallel programming concepts faster.
+This allows us to abstract away the need for thread management and ease you into learning some basic parallel programming concepts faster.
 
 In your `Cargo.toml` file, add this line under the `[dependencies]` section:
 
@@ -78,7 +78,11 @@ Hello from thread #2
 
 Why?? It's because there is no order in thread execution, they are all running simultaneously!
 
-## Full Code
+<details>
+<summary>
+
+## Complete Solution:
+</summary>
 
 ```rust
 use bevy_tasks::TaskPoolBuilder;
@@ -103,3 +107,4 @@ fn main() {
     });
 }
 ```
+</details>
