@@ -3,6 +3,8 @@
 A stencil operation takes in 2 or more inputs and produces 1 output based on those inputs.
 In this exercise, we are going to transform a list of 30 items into 10 by summing up every consecutive group of 3 numbers.
 
+_Note: Stencil operation can also happen where we combine (through an operation) 2 or more lists with the same length into 1 list._
+
 Example input:
 ```
 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ..., 30
