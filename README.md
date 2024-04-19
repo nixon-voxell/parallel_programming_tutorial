@@ -2,7 +2,7 @@
 
 ## Slides
 
-You can find the associated PDF slides [here]("./Introduction to Parallel Programming.pdf") or the Canva slides [here](https://www.canva.com/design/DAF-tYUrF-g/mkeJrLY4Sp-a51t100g0Yw/view?utm_content=DAF-tYUrF-g&utm_campaign=designshare&utm_medium=link&utm_source=editor).
+You can find the associated PDF slides [here](./Introduction%20to%20Parallel%20Programming.pdf) or the Canva slides [here](https://www.canva.com/design/DAF-tYUrF-g/mkeJrLY4Sp-a51t100g0Yw/view?utm_content=DAF-tYUrF-g&utm_campaign=designshare&utm_medium=link&utm_source=editor).
 
 ## Running Prebuilt Programs
 
